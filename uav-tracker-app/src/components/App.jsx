@@ -2,8 +2,8 @@ import React from 'react';
 import '../App.css';
 
 //components
-import DynamicTable from './DynamicTable.js'
-import EnterUav from './EnterUav.js'
+import DynamicTable from './DynamicTable.jsx'
+import EnterUav from './EnterUav.jsx'
 
 
 function App() {
