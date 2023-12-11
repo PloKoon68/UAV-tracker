@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { FEATURES } from './data.js'
+import { FEATURES } from '../../data.js'
 
 
-const DynamicTable = () => {
+const DynamicTable = (getPls) => {
   const [tableData, setTableData] = useState([]);
+  const [trackData, setTrackData] = useState(null);
 
-  const addRow = () => {
-    setTableData([...tableData, ['a', 'b','c', 'd', 'e']]);
+  
+  
+  const addRow = (newData) => {
+    setTableData([...tableData, newData]);
   };
 //  console.log("go through: ", tableData.map((row, rowIndex) => console.log(row, rowIndex)))
 
@@ -18,9 +21,17 @@ const DynamicTable = () => {
     setTableData(newData);
 
   };
+  
+  //en son sonsuz döngüde kaldı burada set tekrar çağırınca
+  if(getPls.newData !== trackData){
+      console.log("not equal!: ", getPls.newData)
+      addRow(getPls.newData);
+      setTrackData(getPls.newData);
+      //setTableData();
+  }
+
   return (
     <div>
-      <button onClick={addRow}>Add Row</button>
         <table>
             <thead>
             <tr>
@@ -32,8 +43,8 @@ const DynamicTable = () => {
             {tableData.map((row, rowIndex) => (
               
             <tr key={rowIndex}>
-              {row.map((item) => (
-                <td key={item}>{item}</td>
+              {row.map((item, columnIndex) => (
+                <td key={columnIndex}>{item}</td>
               ))}
               <td>
                 <button onClick={() => deleteRow(rowIndex)}>Delete</button>
