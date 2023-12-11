@@ -26,9 +26,8 @@ function App() {
     <>
       <nav className="navbar">
         <button className="navBars" onClick={() => handleNavClick('ucaklar')}>Uçaklar</button>
-        <button className="navBars" onClick={() => handleNavClick('otherSection1')}>Other Section 1</button>
-        <button className="navBars" onClick={() => handleNavClick('otherSection2')}>Other Section 2</button>
-        <button className="navBars" onClick={() => handleNavClick('otherSection3')}>Other Section 3</button>
+        <button className="navBars" onClick={() => handleNavClick('ucuslar')}>Uçuşlar</button>
+        <button className="navBars" onClick={() => handleNavClick('adminPaneli')}>Admin Paneli</button>
       </nav>
 
       <header className="App-header">
@@ -38,9 +37,8 @@ function App() {
             <EnterUav newRow={updateDataState} />
           </>
         )}
-        {currentSection === 'otherSection1' && <p>Content for Other Section 1</p>}
-        {currentSection === 'otherSection2' && <p>Content for Other Section 2</p>}
-        {currentSection === 'otherSection3' && <p>Content for Other Section 3</p>}
+        {currentSection === 'ucuslar' && <p>Uçuşlar Tablosu</p>}
+        {currentSection === 'adminPaneli' && <p>Admin Paneli</p>}
       
       </header>
     </>
