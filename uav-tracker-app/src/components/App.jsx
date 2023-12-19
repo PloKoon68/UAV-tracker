@@ -1,22 +1,14 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
-import { useState } from 'react';
 
 //components
-import DynamicTable from './navigate/DynamicTable.jsx'
-import EnterUav from './navigate/EnterUav.jsx'
-
+import PageUcaklar from './navigate/ucaklar/PageUcaklar.jsx';
+import PageUcuslar from './navigate/ucuslar/PageUcuslar.jsx';
 
 function App() {
-  const [dataState, setDataState] = useState(null);
+  const [ucaklarData, setUcaklarData] = useState(null);
+  const [ucuslarData, setUcuslarData] = useState(null);
   const [currentSection, setCurrentSection] = useState('ucaklar');
-
-
-  function updateDataState(newData)  {
-    //console.log(newData)
-    setDataState(newData);
-  }
 
   const handleNavClick = (section) => {
     setCurrentSection(section);
@@ -30,21 +22,19 @@ function App() {
         <button className="navBars" onClick={() => handleNavClick('adminPaneli')}>Admin Paneli</button>
       </nav>
 
-      <header className="App-header">
-      {currentSection === 'ucaklar' && (
-          <>
-            <DynamicTable newData={dataState} />
-            <EnterUav newRow={updateDataState} />
-          </>
-        )}
-        {currentSection === 'ucuslar' && <p>Uçuşlar Tablosu</p>}
-        {currentSection === 'adminPaneli' && <p>Admin Paneli</p>}
-      
-      </header>
+      <div className="app-container">
+        <header className="App-header">
+          {currentSection === 'ucaklar' && (
+            <PageUcaklar data={ucaklarData} updateData={setUcaklarData} />
+          )}
+          {currentSection === 'ucuslar' && (
+            <PageUcuslar data={ucuslarData} updateData={setUcuslarData} />
+          )}
+          {currentSection === 'adminPaneli' && <p>Admin Paneli</p>}
+        </header>
+      </div>
     </>
   );
 }
 
 export default App;
-
-
