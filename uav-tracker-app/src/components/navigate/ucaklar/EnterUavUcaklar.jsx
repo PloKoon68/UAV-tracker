@@ -9,16 +9,25 @@ export default function EnterUav({newRow}) {
 
     const [htmhtmlFormData, sethtmhtmlFormData] = useState(UCAKLAR_FEATURES.map(() => ""));
 
-    //to check if flying input is valid
-    
 
     function handleInputChange(field, ind, value) {
         let temp = [...htmhtmlFormData];
         temp[ind] = value;
         sethtmhtmlFormData(temp);
+
+        //check if all inputs are non-empty
+        let isValid = true;
+        UCAKLAR_FEATURES.map((feature, ind) => {
+            if (document.getElementById(feature.id).value === "") isValid = false;
+        })
+        
+        document.getElementById("submitButton").disabled= !isValid;
+        document.getElementById("submitButton").onclick = uavSubmit;
     }
 
     function uavSubmit() {
+        //Number(document.getElementById("toplam-uçuş-saati").value) >= 0/* && document.getElementById("toplam-uçuş-saati").value !== ''*/ && 
+        console.log("haydi")
         newRow(htmhtmlFormData);
     }
     
@@ -27,19 +36,9 @@ export default function EnterUav({newRow}) {
         <div id="enter-uav-ucaklar">
             <h2>Sample Form</h2>
             <form>
-            
                 {UCAKLAR_FEATURES.map((feature, ind) => <InputForm key={feature.id} ind={ind} inputChanged={handleInputChange} {...feature}/>)}
-                <button className="btn btn-primary w-100 py-2" type="submit" onClick={uavSubmit}>Ekle</button>
+                <button id="submitButton" className="btn btn-primary w-100 py-2" type="submit" onClick={uavSubmit} disabled>Ekle</button>
             </form>
-            
         </div>
     )
 }
-
-
-
-/*
-{UCAKLAR_FEATURES.map((feature, ind) => <Input key={feature.id} ind={ind} inputChanged={handleInputChange} {...feature}/>)}
-         
-            <input id="submitButton" type="submit" value="Submit" onClick={uavSubmit}/>
-*/
