@@ -1,3 +1,4 @@
+/*
 table {
     width: 700px;
     margin-top: 80px;
@@ -68,6 +69,26 @@ table {
   #submitButton {
     background-color: #81ee85;
   }
+ 
+  
+  #enter-uav-ucuslar {
+    padding: 50px;
+    padding-left: 160px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  
+  .form-floating {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
 
-  
-  
+  */
+
+    
+
+

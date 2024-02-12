@@ -1,7 +1,7 @@
 export const UCUSLAR_FEATURES = [
-    {label: "Uçak ismi", id: "uçak-ismi" },
-    {label: "Kalkış Tarihi", id: "kalkis-tarihi" },
-    {label: "Kalkış Lokasyonu", id: "kalkis-lokasyoni"},
-    {label: "İniş Tarihi", id: "inis-tarihi"},    
-    {label: "Uçuş Süresi", id: "ucus-suresi"}    
+    {label: "Uçak ismi", id: "uçak-ismi", type: "text" },
+    {label: "Kalkış Tarihi", id: "kalkis-tarihi", type: "text" },
+    {label: "Kalkış Lokasyonu", id: "kalkis-lokasyoni", type: "text"},
+    {label: "İniş Tarihi", id: "inis-tarihi", type: "date"},    
+    {label: "Uçuş Süresi", id: "ucus-suresi", type: "text"}    
 ]

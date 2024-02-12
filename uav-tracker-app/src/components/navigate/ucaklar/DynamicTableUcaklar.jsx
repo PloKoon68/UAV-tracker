@@ -7,12 +7,12 @@ const DynamicTable = (getPls) => {
   const [trackData, setTrackData] = useState(null);
 
   
-  
+  //table add 
   const addRow = (newData) => {
     setTableData([...tableData, newData]);
   };
-//  console.log("go through: ", tableData.map((row, rowIndex) => console.log(row, rowIndex)))
-
+  
+  //table delete
   const deleteRow = (rowIndex) => {
     
     let newData = [...tableData];
@@ -24,24 +24,21 @@ const DynamicTable = (getPls) => {
   
   //en son sonsuz döngüde kaldı burada set tekrar çağırınca
   if(getPls.newData !== trackData){
-      console.log("not equal!: ", getPls.newData)
       addRow(getPls.newData);
       setTrackData(getPls.newData);
-      //setTableData();
   }
 
   return (
-    <div>
-        <table>
-            <thead>
-            <tr>
-                {UCAKLAR_FEATURES.map((feature) => <th key={feature.id}>{feature.label}</th>)}
-            </tr>
-            </thead>
-
-            <tbody>
-            {tableData.map((row, rowIndex) => (
-              
+    <div className="container">
+      <h2>Uçaklar Tablosu</h2>
+      <table className="table table-bordered table-striped">
+        <thead className="thead-dark">
+          <tr>
+            {UCAKLAR_FEATURES.map((feature) => <th key={feature.id}>{feature.label}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map((item, columnIndex) => (
                 <td key={columnIndex}>{item}</td>
@@ -51,8 +48,8 @@ const DynamicTable = (getPls) => {
               </td>
             </tr>
           ))}
-            </tbody>
-        </table>
+        </tbody>
+      </table>
     </div>
   );
 };

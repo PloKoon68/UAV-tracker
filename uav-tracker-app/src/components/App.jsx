@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 //components
@@ -15,6 +14,7 @@ function App() {
   const [ucaklarData, setUcaklarData] = useState(null);
   const [ucuslarData, setUcuslarData] = useState(null);
 
+
   const [currentSection, setCurrentSection] = useState('ucaklar');
 
 
@@ -25,6 +25,7 @@ function App() {
       
       <div className="app-container">
         <header className="App-header">
+
           {currentSection === 'ucaklar' && (
             <PageUcaklar data={ucaklarData} updateData={setUcaklarData} />
           )}

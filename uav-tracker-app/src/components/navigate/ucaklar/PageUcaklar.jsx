@@ -10,13 +10,7 @@ import EnterUavUcaklar from './EnterUavUcaklar.jsx'
 
 function PageUcaklar() {
   const [dataState, setDataState] = useState(null);
-
-/*
-  function updateDataState(newData)  {
-    setDataState(newData);
-  }
-*/
-
+  console.log(dataState)
   return (
     <>
       <div className="flex-container">

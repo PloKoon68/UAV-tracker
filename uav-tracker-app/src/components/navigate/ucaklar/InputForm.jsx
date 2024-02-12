@@ -1,16 +1,13 @@
-export default function InputForm({label, id, ind, inputChanged}) {
+export default function InputForm({label, id, ind, type, inputChanged}) {
 
     return (
-        <>
-            <label htmlFor={id}></label>
-            <input type="text"  placeholder={label} id={id} ind={ind}  onChange={(e) =>inputChanged(id, ind, e.target.value)}/>
+        <div className="mb-3">
+        
+            <label className="form-label" htmlFor={id}><strong>{label}:</strong></label>
+            <input className="form-control" type={type} placeholder={label} id={id} ind={ind} min={(id === "toplam-uçuş-saati"? "0": "")} onChange={(e) =>inputChanged(id, ind, e.target.value)}/>
 
-       </>
+       </div>
 
     )
 }
 
-/*
-            <label style={{ marginTop: '100px' }} htmlFor={id}><strong>{label}:</strong></label><br/>
-            <input type="text"  placeholder={label} id={id} ind={ind}  onChange={(e) =>inputChanged(id, ind, e.target.value)}/><br/>
-*/ 

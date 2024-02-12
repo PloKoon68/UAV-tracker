@@ -1,7 +1,7 @@
 
 
 import { useState } from 'react';
-import Input from './InputUcuslar.jsx'
+import InputForm from './InputForm.jsx'
 import { UCUSLAR_FEATURES } from './ucuslarData.js'
 
 
@@ -23,7 +23,7 @@ export default function EnterUav({newRow}) {
     return (
 
         <div id="enter-uav-ucuslar">
-            {UCUSLAR_FEATURES.map((feature, ind) => <Input key={feature.id} ind={ind} inputChanged={handleInputChange} {...feature}/>)}
+            {UCUSLAR_FEATURES.map((feature, ind) => <InputForm key={feature.id} ind={ind} inputChanged={handleInputChange} {...feature}/>)}
         
             <input id="submitButton" type="submit" value="Submit" onClick={uavSubmit}/>
         </div>
