@@ -1,44 +1,44 @@
 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputForm from './InputForm.jsx'
 import { UCAKLAR_FEATURES } from './ucaklarData.js'
 
 
-export default function EnterUav({newRow}) {
+export default function EnterUav(props) {
 
-    const [htmhtmlFormData, sethtmhtmlFormData] = useState(UCAKLAR_FEATURES.map(() => ""));
+    function uavSubmit(event) { 
+        event.preventDefault();
+        const forms = document.querySelectorAll('form');
+        const form = forms[0];
+        let htmlFormData = [];
 
-
-    function handleInputChange(field, ind, value) {
-        let temp = [...htmhtmlFormData];
-        temp[ind] = value;
-        sethtmhtmlFormData(temp);
-
+        //push the values of inputs to the array
+        Array.from(form.elements).forEach((input, ind) => {
+            if(input.tagName === "INPUT") htmlFormData.push(input.value);
+        })
+        
         //check if all inputs are non-empty
         let isValid = true;
         UCAKLAR_FEATURES.map((feature, ind) => {
             if (document.getElementById(feature.id).value === "") isValid = false;
         })
         
-        document.getElementById("submitButton").disabled= !isValid;
-        document.getElementById("submitButton").onclick = uavSubmit;
-    }
-
-    function uavSubmit() {
-        //Number(document.getElementById("toplam-uçuş-saati").value) >= 0/* && document.getElementById("toplam-uçuş-saati").value !== ''*/ && 
-        console.log("haydi")
-        newRow(htmhtmlFormData);
-    }
+        //give warning if not valid: non empty input not acceptable
+        if(isValid) props.onChangeData(htmlFormData);  
+     }
     
-    return (
+ 
 
+    return (
         <div id="enter-uav-ucaklar">
             <h2>Sample Form</h2>
             <form>
-                {UCAKLAR_FEATURES.map((feature, ind) => <InputForm key={feature.id} ind={ind} inputChanged={handleInputChange} {...feature}/>)}
-                <button id="submitButton" className="btn btn-primary w-100 py-2" type="submit" onClick={uavSubmit} disabled>Ekle</button>
+                {UCAKLAR_FEATURES.map((feature, ind) => <InputForm key={feature.id} ind={ind} {...feature}/>)}
+                <button id="submitButton" className="btn btn-primary w-100 py-2" type="submit" onClick={uavSubmit}>Ekle</button>
             </form>
         </div>
     )
 }
+
+
