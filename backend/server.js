@@ -11,11 +11,11 @@ app.post("/submit", (req, res) => {
         console.log(req.body)
         res.send(req.body)
 })
-
+/*
 app.get("/api", (req, res) => {
     return res.json({message: "This is from backend."})
 })    
-
+*/
 app.listen(4000, () => {
     console.log("Listening 4000");
 })
