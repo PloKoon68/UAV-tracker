@@ -3,11 +3,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 
 
 import './PageUcaklar.css';
@@ -60,11 +55,7 @@ function PageUcaklar() {
 
     setTableData(newData);
   };
-  const products = [
-    { code: 'P001', name: 'Product 1', category: 'Category A', quantity: 10 },
-    { code: 'P002', name: 'Product 2', category: 'Category B', quantity: 20 },
-    // More products...
-  ];
+  
 
   return (
     <>
