@@ -10,7 +10,8 @@ import PageUcaklar from './navigate/ucaklar/PageUcaklar.jsx';
 import PageUcuslar from './navigate/ucuslar/PageUcuslar.jsx';
 import Navbar from './NavBar.jsx';
 
-import BasicDemo from './testTable.jsx';
+import BasicDemo from './test/testTable.jsx';
+import HookFormDoc from './test/testForm.jsx';
 
 function App() {
   const [ucaklarData, setUcaklarData] = useState(null);
@@ -22,7 +23,18 @@ function App() {
     <>
       
       <Navbar handlePage= {setCurrentSection}/>
-      {<BasicDemo/>}
+      <BasicDemo/>
+      <HookFormDoc inputs={ [
+    {
+        name: 'city',
+        label: 'City',
+        options: ["Turkey", "USA", "Germany"],
+        optionLabel: 'cname',
+        optionGroupLabel: 'name',
+        optionGroupChildren: ['states', 'cities']
+    }
+    // Add more input objects for each input in your data table
+]}/>
       <div className="app-container">
         <header className="App-header">
           {currentSection === 'ucaklar' && (
