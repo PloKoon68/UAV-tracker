@@ -6,20 +6,28 @@ import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dropdown } from 'primereact/dropdown';
-import { Tag } from 'primereact/tag';
+//import { Tag } from 'primereact/tag';
 
 import { Button } from 'primereact/button';
 
 export default function RowEditingDemo() {
     const [products, setProducts] = useState([
             {
-            uçak_ismi: "aa",
-            uçak_tipi: "cc",
-            müşteri: "25+"
+                uçak_ismi: "aa",
+                uçak_tipi: "cc",
+                müşteri: "25+",
+                toplam_uçuş_saati: "15"
+            },
+            {
+                uçak_ismi: "av",
+                uçak_tipi: "cs",
+                müşteri: "2as5+",
+                toplam_uçuş_saati: "125"
             }
         ]);
-        const [statusesUçakTipi] = useState(['AKSUNGUR', 'ANKA-3', 'KAAN']);
-        const [statusesMüşteri] = useState(['ASELSAN', 'HAVELSAN']);
+    
+    const [statusesUçakTipi] = useState(['AKSUNGUR', 'ANKA-3', 'KAAN']);
+    const [statusesMüşteri] = useState(['ASELSAN', 'HAVELSAN']);
 
     const onRowEditComplete = (e) => {
         let _products = [...products];
@@ -91,16 +99,26 @@ export default function RowEditingDemo() {
         return rowData.name !== 'Blue Band';
     };
 
+
+    
+    const onDelete = (rowData) => {
+        const updatedArray = products.filter(item => {
+            for (const [key, value] of Object.entries(rowData))
+                if (item[key] !== value) return true; 
+            return false; 
+        });
+        setProducts(updatedArray);
+    }
     const BodyTemplate = (rowData) => {
         return (
           <React.Fragment>
-            <Column rowEditor={true} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column> 
-            <Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => console.log(rowData) /*onDelete(rowData)*/} />
-        </React.Fragment>
+            <Column rowEditor={true} headerStyle={{width: '10%',minWidth: '8rem'}} bodyStyle={{ textAlign: 'center' }}></Column> 
+            <Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => onDelete(rowData)} />
+          </React.Fragment>
         );
-      }; 
+    }; 
 
-
+    
     return (
         <div className="card p-fluid">
             <DataTable value={products} editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete} tableStyle={{ minWidth: '50rem' }}>
