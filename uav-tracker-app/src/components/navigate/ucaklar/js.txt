@@ -1,0 +1,17 @@
+export const TABLE_FEATURES = [
+    {field:"uçak_ismi", header:"Uçak ismi"},
+    {field:"uçak_tipi", header:"Uçak tipi"},
+    {field:"müþteri", header:"Müþteri"},
+    {field:"toplam_uçuþ_saati", header:"Toplam uçuþ saati"},
+]
+
+export const FORM_FEATURES = [
+    {label:"Uçak ismi", id: "uçak-ismi", type: "text"},
+    {label:"Uçak tipi", id: "uçak-tipi", type: "text"},
+    {label:"Müþteri" ,id: "müþteri", type: "text"},
+    {label:"Toplam uçuþ saati", id: "toplam-uçuþ-saati", type: "number"},
+]
+
+
+
+

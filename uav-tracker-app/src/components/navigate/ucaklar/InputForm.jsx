@@ -1,4 +1,4 @@
-export default function InputForm({label, id, ind, type, inputChanged}) {
+export default function InputForm({label, id, ind, type}) {
 
     return (
         <div className="mb-3">
@@ -11,5 +11,3 @@ export default function InputForm({label, id, ind, type, inputChanged}) {
     )
 }
 
-
-//onChange={(e) =>inputChanged(id, ind, e.target.value)}

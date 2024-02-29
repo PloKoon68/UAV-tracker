@@ -10,6 +10,8 @@ import PageUcaklar from './navigate/ucaklar/PageUcaklar.jsx';
 import PageUcuslar from './navigate/ucuslar/PageUcuslar.jsx';
 import Navbar from './NavBar.jsx';
 
+import BasicDemo from './testTable.jsx';
+
 function App() {
   const [ucaklarData, setUcaklarData] = useState(null);
   const [ucuslarData, setUcuslarData] = useState(null);
@@ -20,7 +22,7 @@ function App() {
     <>
       
       <Navbar handlePage= {setCurrentSection}/>
-      
+      {<BasicDemo/>}
       <div className="app-container">
         <header className="App-header">
           {currentSection === 'ucaklar' && (

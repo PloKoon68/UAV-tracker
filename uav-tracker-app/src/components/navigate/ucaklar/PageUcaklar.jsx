@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 
@@ -16,21 +16,19 @@ function PageUcaklar() {
 
   
   const [tableData, setTableData] = useState([]);
-  const [apiData, setApiData] = useState(null);
+
   
 
   const notIn = function(newData) {
-    let i;
-    for(i = 0; i < tableData.length; i++) {
-      let j;
-      for(j = 0; j < tableData[0].length; j++) if(tableData[i][j] !== newData[j]) break;
-      if(j === tableData[0].length) break;
-    }
-    return i === tableData.length;
+    for(let i = 0; i < tableData.length; i++) 
+      if((JSON.stringify(tableData[i]) === JSON.stringify(newData))) return false;
+    return true;
   }
 
   const addNewData = (newData)=>{
     //first write to db, then fetch from db
+  
+    
     if(notIn(newData)) {
       setTableData(prevData =>[...prevData, newData]);
 
@@ -45,9 +43,9 @@ function PageUcaklar() {
       });
     }
     //else, pop a warning
-  }
   
-
+ }
+  
   //used in DynamicTableUcaklar -> delete buttons
   const deleteRow = (rowIndex) => {
     let newData = [...tableData];

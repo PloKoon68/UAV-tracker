@@ -1,50 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { UCAKLAR_FEATURES, UCAKLAR_FEATURES2 } from './ucaklarData.js'
+import { TABLE_FEATURES } from './ucaklarData.js'
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
 
 function DynamicTable(props) {
-/*
-  const products = [
-    { code: 'P001', name: 'Product 1', category: 'Category A', quantity: 10 },
-    { code: 'P002', name: 'Product 2', category: 'Category B', quantity: 20 },
-    // More products...
-  ];
-*/
-
+  
+  
+  const BodyTemplate = (rowData) => {
+    return (
+      <React.Fragment>
+        <Column rowEditor={true} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column> 
+        <Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => console.log(rowData) /*onDelete(rowData)*/} />
+    </React.Fragment>
+    );
+  }; 
+  const allowEdit = (rowData) => {
+    return rowData.name !== 'Blue Band';
+  };
+  
+  console.log(props.tableData);
   return (
     <div className="container">
       <h2>Uçaklar Tablosu</h2>
-      <DataTable value={props.tableData} tableStyle={{ minWidth: '50rem' }}>
-        {UCAKLAR_FEATURES2.map((feature) => <Column field={feature.field}  header={feature.header}></Column>)}
-      </DataTable>
+      <DataTable value={props.tableData} stripedRows removableSort tableStyle={{ minWidth: '50rem' }} >
+        {TABLE_FEATURES.map((feature, ind) => <Column key={ind} field={feature.field} header={feature.header} sortable></Column>)}
 
-      <table className="table table-bordered table-striped">
-        <thead className="thead-dark">
-          <tr>
-            {UCAKLAR_FEATURES.map((feature) => <th key={feature.id}>{feature.label}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {props.tableData.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((item, columnIndex) => (
-                  <td key={columnIndex}>{item}</td>
-                ))}
-                <td>
-                  <button onClick={() => props.deleteRow(rowIndex)}>Delete</button>
-                </td>
-              </tr>
-            ))
-          }
- 
-        </tbody>
-      </table>
+        <Column body={BodyTemplate}></Column>
+        <Column rowEditor={allowEdit} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+
+      </DataTable>
     </div>
   );
 }
