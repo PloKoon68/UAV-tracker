@@ -42,6 +42,7 @@ export default function EnterUav(props) {
             <h2>Sample Form</h2>
             <form>
                 {FORM_FEATURES.map((feature, ind) => <InputForm key={ind} ind={ind} {...feature}/>)}
+                <input className="form-control" type="text" placeholder="tt" />
                 <button id="submitButton" className="btn btn-primary w-100 py-2" type="submit" onClick={uavSubmit}>Ekle</button>
             </form>
         </div>

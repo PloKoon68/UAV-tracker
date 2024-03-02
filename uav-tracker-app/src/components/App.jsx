@@ -24,7 +24,8 @@ function App() {
       
       <Navbar handlePage= {setCurrentSection}/>
       <BasicDemo/>
-      <HookFormDoc inputs={ [
+      
+      {/*<HookFormDoc inputs={ [
     {
         name: 'city',
         label: 'City',
@@ -34,7 +35,7 @@ function App() {
         optionGroupChildren: ['states', 'cities']
     }
     // Add more input objects for each input in your data table
-]}/>
+]}/>*/}
       <div className="app-container">
         <header className="App-header">
           {currentSection === 'ucaklar' && (
