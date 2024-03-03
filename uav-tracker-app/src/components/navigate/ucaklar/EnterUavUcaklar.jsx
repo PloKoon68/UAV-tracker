@@ -21,10 +21,14 @@ export default function EnterUav(props) {
         if(isValid) {
             var newData = {};
             Array.from(form.elements).forEach((input, ind) => {
-                console.log("ttt: ", input.classList)
+                /*
                 if(input.tagName === "INPUT") {
                     newData[TABLE_FEATURES[ind].field] = input.value;
-                } 
+                } */
+                if(input.classList[0] === "f") {
+                    newData[TABLE_FEATURES[ind].field] = input.value;
+                }
+                
             })
             props.onChangeData(newData);  
         }

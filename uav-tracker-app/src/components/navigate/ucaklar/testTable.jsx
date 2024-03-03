@@ -11,6 +11,8 @@ import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 
 export default function RowEditingDemo(props) {
+
+    console.log("table is: ", props.tableData)
     const [products, setProducts] = useState([
             {
                 uçak_ismi: "aa",
@@ -30,12 +32,12 @@ export default function RowEditingDemo(props) {
     const [statusesMüşteri] = useState(['ASELSAN', 'HAVELSAN']);
 
     const onRowEditComplete = (e) => {
-        let _products = [...products];
+        let _products = [...props.tableData];
         let { newData, index } = e;
 
         _products[index] = newData;
 
-        setProducts(_products);
+        props.setTableData(_products);
     };
 
     
@@ -102,12 +104,12 @@ export default function RowEditingDemo(props) {
 
     
     const onDelete = (rowData) => {
-        const updatedArray = products.filter(item => {
+        const updatedArray = props.tableData.filter(item => {
             for (const [key, value] of Object.entries(rowData))
                 if (item[key] !== value) return true; 
             return false; 
         });
-        setProducts(updatedArray);
+        props.setTableData(updatedArray);
     }
     const BodyTemplate = (rowData) => {
         return (
@@ -121,7 +123,7 @@ export default function RowEditingDemo(props) {
     
     return (
         <div className="card p-fluid">
-            <DataTable value={products} editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete} tableStyle={{ minWidth: '50rem' }}>
+            <DataTable value={props.tableData} editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete} tableStyle={{ minWidth: '50rem' }}>
                 <Column field="uçak_ismi" header="Uçak ismi:" editor={(options) => textEditor(options)} style={{ width: '20%'}}></Column>
                 <Column field="uçak_tipi" header="Uçak tipi" body={(statusBodyTemplateUçakTipi)} editor={(options) => statusEditorUçakTipi(options)} style={{ width: '20%' }}></Column>
                 <Column field="müşteri" header="Müşteri" body={statusBodyTemplateMüşteri} editor={(options) => statusEditorMüşteri(options)} style={{ width: '20%' }}></Column>

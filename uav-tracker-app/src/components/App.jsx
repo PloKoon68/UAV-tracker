@@ -23,7 +23,6 @@ function App() {
     <>
       
       <Navbar handlePage= {setCurrentSection}/>
-      <BasicDemo/>
       
       {/*<HookFormDoc inputs={ [
     {
