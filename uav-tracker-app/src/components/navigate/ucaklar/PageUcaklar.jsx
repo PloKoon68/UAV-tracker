@@ -9,6 +9,7 @@ import './PageUcaklar.css';
 
 //components 
 import EnterUavUcaklar from './EnterUavUcaklar.jsx'
+import DynamicTableUcaklar from './DynamicTableUcaklar.jsx'
 
 import BasicDemo from './testTable.jsx';
 
@@ -61,6 +62,7 @@ function PageUcaklar() {
     <>
       <div className="flex-container"> 
         <BasicDemo tableData={tableData} setTableData={setTableData}/>
+      
         <EnterUavUcaklar onChangeData={addNewData} />
       </div>
     </>

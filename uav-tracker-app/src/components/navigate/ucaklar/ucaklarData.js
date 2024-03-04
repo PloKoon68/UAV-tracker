@@ -5,12 +5,11 @@ export const TABLE_FEATURES = [
     {field:"toplam_uçuş_saati", header:"Toplam uçuş saati"},
 ]
 
-export const FORM_FEATURES = [
-    {label:"Uçak ismi", id: "uçak-ismi", type: "text"},
-    {label:"Uçak tipi", id: "uçak-tipi", type: "text"},
-    {label:"Müşteri" ,id: "müşteri", type: "text"},
-    {label:"Toplam uçuş saati", id: "toplam-uçuş-saati", type: "number"},
-]
+export const FORM_DATA = {
+    uçak_tipi: ['t1', 't2', 't3', 't4', 't5'],
+    müşteri: ['ASELSAN', 'HAVELSAN', 'BAYKAR', 'CEZERİ']
+}
+
 
 
 

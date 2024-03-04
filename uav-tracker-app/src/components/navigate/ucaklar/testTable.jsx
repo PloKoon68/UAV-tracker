@@ -1,18 +1,18 @@
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dropdown } from 'primereact/dropdown';
-//import { Tag } from 'primereact/tag';
 
 import { Button } from 'primereact/button';
 
-export default function RowEditingDemo(props) {
+import {FORM_DATA} from './ucaklarData.js'
 
-    console.log("table is: ", props.tableData)
+export default function RowEditingDemo(props) {
+/*
     const [products, setProducts] = useState([
             {
                 uçak_ismi: "aa",
@@ -27,9 +27,9 @@ export default function RowEditingDemo(props) {
                 toplam_uçuş_saati: "125"
             }
         ]);
-    
-    const [statusesUçakTipi] = useState(['AKSUNGUR', 'ANKA-3', 'KAAN']);
-    const [statusesMüşteri] = useState(['ASELSAN', 'HAVELSAN']);
+    */
+    const [statusesUçakTipi] = useState([...FORM_DATA.uçak_tipi]);
+    const [statusesMüşteri] = useState([...FORM_DATA.müşteri]);
 
     const onRowEditComplete = (e) => {
         let _products = [...props.tableData];

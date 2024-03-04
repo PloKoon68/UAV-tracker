@@ -1,8 +1,5 @@
-
-
-import { useEffect, useState } from 'react';
-import InputForm from './InputForm.jsx'
-import { TABLE_FEATURES, FORM_FEATURES } from './ucaklarData.js'
+import { TABLE_FEATURES } from './ucaklarData.js'
+import {FORM_DATA} from './ucaklarData.js'
 
 
 export default function EnterUav(props) {
@@ -15,38 +12,22 @@ export default function EnterUav(props) {
         
 
         let isValid = true;
-        FORM_FEATURES.map((feature) => {
-            if (document.getElementById(feature.id).value === "") isValid = false;
-        })
-        if(isValid) {
+        
             var newData = {};
             Array.from(form.elements).forEach((input, ind) => {
-                /*
-                if(input.tagName === "INPUT") {
-                    newData[TABLE_FEATURES[ind].field] = input.value;
-                } */
+                
                 if(input.classList[0] === "f") {
+                    if (input.value === "")  {
+                        isValid = false;
+                        console.log(input.value)
+                    }
                     newData[TABLE_FEATURES[ind].field] = input.value;
                 }
                 
             })
-            props.onChangeData(newData);  
-        }
+            if(isValid) props.onChangeData(newData);  
 
-        
-        //check if all inputs are non-empty
-        
-        
-       
-        //give warning if not valid: non empty input not acceptable
      }
-    
-     const FORM_FEATURES = [
-        {label:"Uçak ismi", id: "uçak-ismi", type: "text"},
-        {label:"Uçak tipi", id: "uçak-tipi", type: "text"},
-        {label:"Müşteri" ,id: "müşteri", type: "text"},
-        {label:"Toplam uçuş saati", id: "toplam-uçuş-saati", type: "number"},
-    ]
     
  
 
@@ -63,22 +44,21 @@ export default function EnterUav(props) {
                     <label className="form-label" htmlFor="uçak-tipi"><strong>Uçak tipi:</strong></label>
                     <select className="f form-select" id="uçak-tipi">
                         <option value="">Select a Uçak tipi</option>
-                        <option value="t1">t1</option>
-                        <option value="t2">t2</option>
-                        <option value="t3">t3</option>
+                        {FORM_DATA.uçak_tipi.map((element, index) => (
+                            <option key={index} value={element}>{element}</option>
+                        ))}
                     </select>
                 </div>
 
                 <div className="mb-3">
-                    <label className="form-label" htmlFor="müşteri"><strong>Müşteri:</strong></label>
-                    <select className="f form-select" id="müşteri">
+                    <label className="form-label" htmlFor="uçak-tipi"><strong>Müşteri:</strong></label>
+                    <select className="f form-select" id="uçak-tipi">
                         <option value="">Select a Müşteri</option>
-                        <option value="ASELSAN">ASELSAN</option>
-                        <option value="HAVELSAN">HAVELSAN</option>
-                        <option value="BAYKAR">BAYKAR</option>
+                        {FORM_DATA.müşteri.map((element, index) => (
+                            <option key={index} value={element}>{element}</option>
+                        ))}
                     </select>
                 </div>
-
                 <div className="mb-3">
                     <label className="form-label" htmlFor="toplam-uçuş-saati"><strong>Toplam uçuş saati:</strong></label>
                     <input className="f form-control" type="number" placeholder="Toplam uçuş saati" id="toplam-uçuş-saati" min="0" />
