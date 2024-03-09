@@ -1,7 +1,0 @@
-export const UCUSLAR_FEATURES = [
-    {label: "Uçak ismi", id: "uçak-ismi", type: "text" },
-    {label: "Kalkýþ Tarihi", id: "kalkis-tarihi", type: "text" },
-    {label: "Kalkýþ Lokasyonu", id: "kalkis-lokasyoni", type: "text"},
-    {label: "Ýniþ Tarihi", id: "inis-tarihi", type: "date"},    
-    {label: "Uçuþ Süresi", id: "ucus-suresi", type: "text"}    
-]

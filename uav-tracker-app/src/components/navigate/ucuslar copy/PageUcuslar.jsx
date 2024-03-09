@@ -2,15 +2,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import './PageUcaklar.css';
+import './PageUcuslar.css';
 
 //components 
-import EnterUavUcaklar from './EnterUavUcaklar.jsx'
-import DynamicTableUcaklar from './DynamicTableUcaklar.jsx';
+import EnterUavUcuslar from './EnterUavUcuslar.jsx'
+import DynamicTableUcuslar from './DynamicTableUcuslar.jsx';
 
 
 
-function PageUcaklar() {
+function PageUcuslar() {
 
   
   const [tableData, setTableData] = useState([]);
@@ -44,9 +44,9 @@ function PageUcaklar() {
   return (
     <>
       <div className="flex-container"> 
-        <DynamicTableUcaklar tableData={tableData} setTableData={setTableData} setEnterData={setEnterData}/>
+        <DynamicTableUcuslar tableData={tableData} setTableData={setTableData} setEnterData={setEnterData}/>
         {enterData && (
-            <EnterUavUcaklar onChangeData={addNewData} setEnterData={setEnterData}/>
+            <EnterUavUcuslar onChangeData={addNewData} setEnterData={setEnterData}/>
           )}
         
       </div>
@@ -54,4 +54,4 @@ function PageUcaklar() {
   );
 }
 
-export default PageUcaklar;
+export default PageUcuslar;

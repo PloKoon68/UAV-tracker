@@ -5,45 +5,38 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
 //components
 import PageUcaklar from './navigate/ucaklar/PageUcaklar.jsx';
-import PageUcuslar from './navigate/ucuslar/PageUcuslar.jsx';
+import PageUcuslar from './navigate/ucuslar copy/PageUcuslar.jsx';
+import AdminPanel from './navigate/admin paneli/AdminPanel.jsx';
+
 import Navbar from './NavBar.jsx';
 
-import BasicDemo from './test/testTable.jsx';
-import HookFormDoc from './test/testForm.jsx';
-
 function App() {
-  const [ucaklarData, setUcaklarData] = useState(null);
-  const [ucuslarData, setUcuslarData] = useState(null);
 
-  const [currentSection, setCurrentSection] = useState('ucaklar');
+
+  const [currentSection, setCurrentSection] = useState(0);
+
+  //options for admin panel.
+  const [ucakTipiTags, setUcakTipiTags] = useState([])
+  const [musteriTags, setMusteriTags] = useState([])
+
 
   return (
     <>
       
-      <Navbar handlePage= {setCurrentSection}/>
-      
-      {/*<HookFormDoc inputs={ [
-    {
-        name: 'city',
-        label: 'City',
-        options: ["Turkey", "USA", "Germany"],
-        optionLabel: 'cname',
-        optionGroupLabel: 'name',
-        optionGroupChildren: ['states', 'cities']
-    }
-    // Add more input objects for each input in your data table
-]}/>*/}
+      <Navbar handlePage= {(p) => setCurrentSection(p)} currentSection={currentSection}/>
+    
       <div className="app-container">
         <header className="App-header">
-          {currentSection === 'ucaklar' && (
+          {currentSection === 0 && (
             <PageUcaklar/>
           )}
-          {currentSection === 'ucuslar' && (
-            <PageUcuslar data={ucuslarData} updateData={setUcuslarData} />
+          {currentSection === 1 && (
+            <PageUcuslar/>
           )}
-          {currentSection === 'adminPaneli' && <p>Admin Paneli</p>}
+          {currentSection === 2 && (<AdminPanel setUcakTipiTags={setUcakTipiTags} setMusteriTags={setMusteriTags}/>)}
         </header>
 
       </div>
