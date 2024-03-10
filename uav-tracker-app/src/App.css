@@ -26,3 +26,30 @@ code {
 
 
 
+/* Custom styles */
+.custom-tabmenu .p-tabmenu-nav {
+  background-color: #f0f0f0;
+  border: none;
+}
+
+.custom-tabmenu .p-tabmenu-nav-item {
+  padding: 0.5rem 1rem;
+}
+
+.custom-tabmenu .p-tabmenu-nav-link {
+  color: #333;
+}
+
+.custom-tabmenu .p-tabmenu-nav-link:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+.custom-tabmenu .p-tabmenu-nav-link.p-highlight {
+  background-color: #007ad9;
+  color: #fff;
+}
+
+
+
+

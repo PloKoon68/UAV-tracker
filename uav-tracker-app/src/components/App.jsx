@@ -17,6 +17,7 @@ function App() {
 
 
   const [currentSection, setCurrentSection] = useState(0);
+  console.log(currentSection)
 
   //options for admin panel.
   const [ucakTipiTags, setUcakTipiTags] = useState([])

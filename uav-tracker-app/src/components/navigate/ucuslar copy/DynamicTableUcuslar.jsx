@@ -19,12 +19,12 @@ export default function DynamicTableUcaklar(props) {
     const [statusesKalkışLokasyonu] = useState([...FORM_DATA.kalkış_lokasyonu]);
     const [statusesİnişLokasyonu] = useState([...FORM_DATA.iniş_lokasyonu]);
 
+
     const onRowEditComplete = (e) => {
         let _products = [...props.tableData];
         let { newData, index } = e;
-
         _products[index] = newData;
-
+        console.log("tbh: ", _products)
         props.setTableData(_products);
     };
 
@@ -73,30 +73,38 @@ export default function DynamicTableUcaklar(props) {
     };
 
 
+
+    const formatDate = (date) => {
+        const [year, month, day] = date.split('-');
+        return `${day}/${month}/${year}`;
+    };
+
     //KALKIŞ TARİHİ
     const kalkışTarihiTemplate = (rowData) => {
-        return (<Calendar  />)
+        return (rowData.kalkış_tarihi)
     };
     const kalkışTarihiEditor = (options) => {
-        return (<Calendar/>);
+        
+        return (<input className="f form-control" type="date" value={options.value} placeholder="Tarih seçiniz" id="kalkış_tarihi" onChange={(e) => options.editorCallback(formatDate(e.target.value))}/>)
+        
     };
-// {/*value={date} onChange={(e) => setDate(e.value)} */}
 
 
     //KALKIŞ TARİHİ
     const inişTarihiTemplate = (rowData) => {
-        return (<Calendar  />)
+        return (rowData.inis_tarihi)
     };
-    //{/*value={date} onChange={(e) => setDate(e.value)*/}
     const inişTarihiEditor = (options) => {
-        return (<Calendar />);
+        return (<input className="f form-control" type="date" placeholder="Tarih seçiniz" id="inis_tarihi" onChange={(e) => options.editorCallback(formatDate(e.target.value))}/>)
     };
 
+
+    //UÇUŞ SÜRESİ
     const uçuşSaatiTemplate = (rowData) => {
         return new Intl.NumberFormat('tr-TR', {
             style: "unit",
             unit: "hour",
-          }).format(rowData.toplam_uçuş_saati)
+          }).format(rowData.ucus_suresi)
     };
     const uçuşSaatiEditor = (options) => {
         return <InputNumber value={options.value} onValueChange={(e) => options.editorCallback(e.value) } suffix=" sa." />;
@@ -137,13 +145,14 @@ export default function DynamicTableUcaklar(props) {
             <Button id="addData" className="btn btn-primary w-15" icon="pi pi-plus-circle" type="submit" onClick={addData}  >Veri ekle</Button>
     {/*       <button id="addData" className="btn btn-primary w-15 py-2" type="submit" icon="pi pi-plus-circle" style={{marginBottom:"5px"}}  onClick={addData}>Veri ekle</button>*/}
             <div id="dataTableUçuşlar" className="card p-fluid container">
+
             <DataTable value={props.tableData} editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete} tableStyle={{ minWidth: '70rem' }}>
                 <Column field="uçak_ismi" header="Uçak ismi" editor={(options) => textEditor(options)} style={{ width: '20%'}}></Column>
                 <Column field="kalkış_lokasyonu" header="Kalkış Lokasyonu" body={(statusBodyTemplateKalkışLokasyonu)} editor={(options) => statusEditorKalkışLokasyonu(options)} style={{ width: '20%' }}></Column>
                 <Column field="kalkış_tarihi" header="Kalkış Tarihi" body={kalkışTarihiTemplate} editor={(options) => kalkışTarihiEditor(options)} style={{ width: '20%' }}></Column>
                 <Column field="iniş_lokasyonu" header="İniş Lokasyonu" body={statusBodyTemplateİnişLokasyonu} editor={(options) => statusEditorİnişLokasyonu(options)} style={{ width: '20%' }}></Column>
-                <Column field="iniş_tarihi" header="İniş Tarihi" body={inişTarihiTemplate} editor={(options) => inişTarihiEditor(options)} style={{ width: '20%' }}></Column>
-                <Column field="toplam_uçuş_saati" header="Toplam Uçuş saati" body={uçuşSaatiTemplate} editor={(options) => uçuşSaatiEditor(options)} style={{ width: '20%' }}></Column>
+                <Column field="inis_tarihi" header="İniş Tarihi" body={inişTarihiTemplate} editor={(options) => inişTarihiEditor(options)} style={{ width: '20%' }}></Column>
+                <Column field="ucus_suresi" header="Uçuş Süresi" body={uçuşSaatiTemplate} editor={(options) => uçuşSaatiEditor(options)} style={{ width: '20%' }}></Column>
                 <Column rowEditor={allowEdit} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
                 <Column body={BodyTemplate}></Column>
             </DataTable>
@@ -151,4 +160,7 @@ export default function DynamicTableUcaklar(props) {
         </>
     );
 }
+
+
+
 

@@ -40,6 +40,7 @@ function PageUcuslar() {
     //else, pop a warning
   
  }
+ console.log("sd:",tableData)
 
   return (
     <>

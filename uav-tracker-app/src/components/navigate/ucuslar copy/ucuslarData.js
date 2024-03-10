@@ -12,11 +12,11 @@ export const FORM_DATA = {
 
 
 export const UCUSLAR_FEATURES = [
-    {label: "Uçak ismi", id: "uçak-ismi", type: "text" },
-    {label: "Kalkış Lokasyonu", id: "kalkis-lokasyoni", type: "text"},
-    {label: "Kalkış Tarihi", id: "kalkis-tarihi", type: "text" },
-    {label: "İniş Lokasyonu", id: "inis-lokasyoni", type: "text"},
-    {label: "İniş Tarihi", id: "inis-tarihi", type: "date"},    
-    {label: "Uçuş Süresi", id: "ucus-suresi", type: "text"}    
+    {label: "Uçak ismi", id: "uçak_ismi", type: "text" },
+    {label: "Kalkış Lokasyonu", id: "kalkış_lokasyonu", type: "text"},
+    {label: "Kalkış Tarihi", id: "kalkış_tarihi", type: "text" },
+    {label: "İniş Lokasyonu", id: "iniş_lokasyonu", type: "text"},
+    {label: "İniş Tarihi", id: "inis_tarihi", type: "date"},    
+    {label: "Uçuş Süresi", id: "ucus_suresi", type: "text"}    
 ]
 
