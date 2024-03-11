@@ -1,3 +1,19 @@
+.admin-panel-container {
+    display: flex;
+}
+
+.panel-container {
+    margin-top: 50px;
+    flex: 0 0 auto; /* Prevent panel from growing */
+    margin-right: 20px; /* Add space between panel and müşteri container */
+    width: 250px;
+}
+
+.items-container {
+    flex: 1; /* Allow müşteri container to grow and fill remaining space */
+}
+
+
 .uçak-tipi-container {
     margin-top: 4%;
     margin-left: 14%;

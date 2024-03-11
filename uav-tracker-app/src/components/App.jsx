@@ -22,6 +22,8 @@ function App() {
   //options for admin panel.
   const [ucakTipiTags, setUcakTipiTags] = useState([])
   const [musteriTags, setMusteriTags] = useState([])
+  const [kalkışLokasyonuTags, setKalkışLokasyonuTags] = useState([])
+  const [inişLokasyonuTags, setİnişLokasyonuTags] = useState([])
 
 
   return (
@@ -37,7 +39,7 @@ function App() {
           {currentSection === 1 && (
             <PageUcuslar/>
           )}
-          {currentSection === 2 && (<AdminPanel setUcakTipiTags={setUcakTipiTags} setMusteriTags={setMusteriTags}/>)}
+          {currentSection === 2 && (<AdminPanel setUcakTipiTags={setUcakTipiTags} setMusteriTags={setMusteriTags} setKalkışLokasyonuTags={setKalkışLokasyonuTags} setİnişLokasyonuTags={setİnişLokasyonuTags}/>)}
         </header>
 
       </div>

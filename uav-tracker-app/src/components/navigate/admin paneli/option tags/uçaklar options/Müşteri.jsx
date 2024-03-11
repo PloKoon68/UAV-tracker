@@ -10,7 +10,7 @@ export default function Müşteri(props) {
     //axios ile db den başka js dosyasında çek buraya getir. Ve ilk render edildiğinde useEffect ile app.js e set ile gönder 
 
     const [musteriTags, setMusteriTags] = useState(MÜŞTERİ)
-
+    console.log("m: ", musteriTags)
     //send to parent 
     useEffect(() => {
         props.setMusteriTags(musteriTags)
